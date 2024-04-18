@@ -22,7 +22,7 @@ with col_title:
 uploaded_data = st.file_uploader('Upload Force Frame Excel Doc')
 
 if uploaded_data is not None:
-  df = pd.read_excel(uploaded_data, engine  = 'openpyxl')
+  df = pd.read_excel(uploaded_data)
   
 else: 
   st.header('Please Upload Data')
