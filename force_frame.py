@@ -22,7 +22,8 @@ with col_title:
 uploaded_data = st.file_uploader('Upload Force Frame Excel Doc')
 
 if uploaded_data is not None:
-  df = pd.read_excel(uploaded_data)
+	data = uploaded_data
+  df = pd.read_excel(data)
   
 else: 
   st.header('Please Upload Data')
