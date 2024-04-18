@@ -284,6 +284,7 @@ for col in ranked_df.columns[1:-3]:
       marker_color=color
   ))
 rank_fig.update_layout(title = 'Ranking Figure')
+rank_fig.update_layout(showlegend = False)
 st.plotly_chart(rank_fig)
 
 
