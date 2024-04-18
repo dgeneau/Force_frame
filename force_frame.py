@@ -29,7 +29,7 @@ else:
   st.stop()
 
 
-head_shots = pd.read_excel('headshots.xlsx', engine='openpyxl')
+head_shots = pd.read_excel('headshots.xlsx')
 
 
 athlete = st.sidebar.selectbox('Select Athlete', sorted(df['Name'].unique()), placeholder="Select Athlete for Analysis")
