@@ -256,8 +256,8 @@ grouped_df = grouped_df[grouped_df['Date']==most_recent_date]
 ranked_df = pd.DataFrame()
 ranked_df['Name'] = grouped_df['Name']
 for col in grouped_df.columns[2:]:
-    grouped_df[col] = pd.to_numeric(grouped_df[col], errors='coerce')
-    ranked_df[f'{col}'] = grouped_df[col].rank(method='average')
+	grouped_df[col] = pd.to_numeric(grouped_df[col], errors='coerce')
+	ranked_df[f'{col}'] = grouped_df[col].rank(method='max', ascending=False)
 
 
 max_rank = len(ranked_df)
