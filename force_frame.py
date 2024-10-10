@@ -8,6 +8,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+import requests
+
+
 
 
 st.set_page_config(layout="wide")
@@ -22,15 +25,21 @@ with col_title:
 uploaded_data = st.file_uploader('Upload Force Frame Excel Doc')
 
 if uploaded_data is not None:
-	data = uploaded_data
-	df = pd.read_excel(data, engine = 'openpyxl')
-  
+  df = pd.read_excel(uploaded_data, engine  = 'openpyxl')
+
 else: 
   st.header('Please Upload Data')
   st.stop()
 
 
-head_shots = pd.read_excel('headshots.xlsx')
+head_shots = pd.read_excel('headshots.xlsx', engine='openpyxl')
+
+
+
+
+
+
+
 
 
 athlete = st.sidebar.selectbox('Select Athlete', sorted(df['Name'].unique()), placeholder="Select Athlete for Analysis")
@@ -256,12 +265,11 @@ grouped_df = grouped_df[grouped_df['Date']==most_recent_date]
 ranked_df = pd.DataFrame()
 ranked_df['Name'] = grouped_df['Name']
 for col in grouped_df.columns[2:]:
-	grouped_df[col] = pd.to_numeric(grouped_df[col], errors='coerce')
-	ranked_df[f'{col}'] = grouped_df[col].rank(method='max', ascending=False)
+    grouped_df[col] = pd.to_numeric(grouped_df[col], errors='coerce')
+    ranked_df[f'{col}'] = grouped_df[col].rank(method='max', ascending=False)
 
 
 max_rank = len(ranked_df)
-
 
 
 # Function to determine color based on rank
